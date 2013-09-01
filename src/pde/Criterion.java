@@ -2,14 +2,14 @@ package pde;
 
 public class Criterion {
 	private String name;
-	private float weight;
-	private int score;
+	private double weight;
+	private int value;
 	
 	// Constructor
-	public Criterion (String name,float weight,int score){
+	public Criterion (String name,double weight,int value){
 		this.name = name;
 		this.weight = weight;
-		this.score = score;
+		this.value = value;
 		
 		if (weight < 0){
 			this.weight = 0;
@@ -17,11 +17,11 @@ public class Criterion {
 		if (weight > 1){
 			this.weight = 1;
 		}
-		if (score < -2){
-			this.score = -2;
+		if (value < -2){
+			this.value = -2;
 		}
-		if (score > 2){
-			this.score = 2;
+		if (value > 2){
+			this.value = 2;
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class Criterion {
 	public void editName(String name){
 		this.name = name;
 	}
-	public void editWeight(float weight){
+	public void editWeight(double weight){
 		this.weight = weight;
 		
 		if (weight < 0){
@@ -39,14 +39,14 @@ public class Criterion {
 			this.weight = 1;
 		}
 	}
-	public void editScore(int score){
-		this.score = score;
+	public void editValue(int value){
+		this.value = value;
 		
-		if (score < -2){
-			this.score = -2;
+		if (value < -2){
+			this.value = -2;
 		}
-		if (score > 2){
-			this.score = 2;
+		if (value > 2){
+			this.value = 2;
 		}
 	}
 	
@@ -54,11 +54,14 @@ public class Criterion {
 	public String toString(){
 		return this.name;
 	}
-	public float getWeight(){
+	public double getWeight(){
 		return this.weight;
 	}
-	public int getScore(){
-		return this.score;
+	public int getValue(){
+		return this.value;
+	}
+	public double getScore(){
+		return this.weight * this.value;
 	}
 
 }

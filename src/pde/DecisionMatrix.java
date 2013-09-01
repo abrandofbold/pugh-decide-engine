@@ -23,12 +23,12 @@ public class DecisionMatrix {
 	// Actions
 	public void score(){
 		int size = this.options.length;
-		float maxScore = 0;
+		double maxScore = 0;
 		ChoiceArray winner = null;
 		
 		for (int i=0; i < size; i++){
 			this.options[i].score();
-			float currentScore = this.options[i].getScore();
+			double currentScore = this.options[i].getScore();
 			
 			if (currentScore > maxScore){
 				maxScore = currentScore;

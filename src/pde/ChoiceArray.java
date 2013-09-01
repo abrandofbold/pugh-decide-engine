@@ -3,7 +3,7 @@ package pde;
 public class ChoiceArray {
 	private String name;
 	private Criterion[] criteria;
-	private float score;
+	private double score;
 	private int rank;
 	
 	// Constructor
@@ -28,10 +28,10 @@ public class ChoiceArray {
 	// Actions
 	public void score(){
 		int size = this.criteria.length;
-		float score = 0;
+		double score = 0;
 		
 		for (int i = 0; i < size; i++){
-			score += criteria[i].getWeight() * criteria[i].getScore();
+			score += criteria[i].getScore();
 		}
 		
 		this.score = score;
@@ -39,12 +39,12 @@ public class ChoiceArray {
 	
 	// Get Info
 	public String toString(){
-		return this.name;
+		return this.name + " [Score: " + this.score + "]";
 	}
 	public Criterion[] getCriteria(){
 		return this.criteria;
 	}
-	public float getScore(){
+	public double getScore(){
 		return this.score;
 	}
 	public int getRank(){
