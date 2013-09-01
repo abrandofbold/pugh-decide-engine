@@ -11,11 +11,11 @@ public class Criterion {
 		this.weight = weight;
 		this.value = value;
 		
-		if (weight < 0){
-			this.weight = 0;
-		}
-		if (weight > 1){
+		if (weight < 1){
 			this.weight = 1;
+		}
+		if (weight > 9){
+			this.weight = 9;
 		}
 		if (value < -2){
 			this.value = -2;
@@ -32,11 +32,11 @@ public class Criterion {
 	public void editWeight(double weight){
 		this.weight = weight;
 		
-		if (weight < 0){
-			this.weight = 0;
-		}
-		if (weight > 1){
+		if (weight < 1){
 			this.weight = 1;
+		}
+		if (weight > 9){
+			this.weight = 9;
 		}
 	}
 	public void editValue(int value){

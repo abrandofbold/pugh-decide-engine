@@ -8,17 +8,6 @@ public class PughDecideEngine {
 	public static void main(String[] args) throws Exception {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		
-		/**
-		Criterion crit1 =  new Criterion("Speed",.491,2);
-		Criterion crit2 =  new Criterion("Agility",.403,1);
-		Criterion crit3 =  new Criterion("Cost",.106,-2);
-		
-		ChoiceArray bmw = new ChoiceArray("BMW",new Criterion[] {crit1,crit2,crit3});
-		bmw.score();
-		
-		System.out.println(bmw.toString());
-		**/
-		
 		System.out.println("[[ Pugh Decide ]]");
 		System.out.println();
 		
@@ -26,16 +15,25 @@ public class PughDecideEngine {
 		String decision = reader.readLine();
 		System.out.println();
 		
-		System.out.println("How many option do you have?");
-		int optionCount = Integer.parseInt(reader.readLine());
-		System.out.println();
-		
-		System.out.println("How many crtieria does your decision depend on?");
+		System.out.print("How many criteria does your decision depend on? ");
 		int criteriaCount = Integer.parseInt(reader.readLine());
 		System.out.println();
+		Criterion[] criteriaSet = new Criterion[criteriaCount];
+		for (int cn = 0; cn < criteriaCount; cn++){
+			System.out.print("What is your "+(cn+1)+" Criteria? ");
+			String critName = reader.readLine();
+
+			System.out.print("Weight (1-9): ");
+			float critWeight = Float.parseFloat(reader.readLine());
+			System.out.println();
+			
+			criteriaSet[cn] = new Criterion(critName,critWeight,0);
+		}
 		
+		System.out.print("How many options do you have? ");
+		int optionCount = Integer.parseInt(reader.readLine());
+		System.out.println();
 		ChoiceArray[] options = new ChoiceArray[optionCount];
-		System.out.println("opt len: "+options.length);
 		
 		for (int o = 0; o < optionCount; o++){
 			Criterion[] criteria = new Criterion[criteriaCount];
@@ -45,39 +43,23 @@ public class PughDecideEngine {
 			System.out.println();
 			
 			for (int c = 0; c < criteriaCount; c++){
-				Criterion[] criteriaSet = new Criterion[criteriaCount];
-				if (c == 0){
-					for (int cn = 0; cn < criteriaCount; cn++){
-						System.out.print("Criterion Name: ");
-						String critName = reader.readLine();
-
-						System.out.print("Weight: ");
-						float critWeight = Float.parseFloat(reader.readLine());
-						System.out.println();
-						
-						criteriaSet[cn] = new Criterion(critName,critWeight,0);
-					}
-				}
 				String name = criteriaSet[c].toString();
 				double weight = criteriaSet[c].getWeight();
 				
-				System.out.print(optionName+", "+name+" (" +weight+") "+"Value: ");
+				System.out.print("What is "+optionName+"'s "+name+" Value? ");
 				int value = Integer.parseInt(reader.readLine());
-				System.out.println("c: "+c);
 				
 				criteria[c] = new Criterion(name,weight,value);
 			}
 			
 			options[o] = new ChoiceArray(optionName,criteria);
 			options[o].score();
-			
-			System.out.println(options[o].toString());
+			System.out.println();
 		}
 		
-		DecisionMatrix dec = new DecisionMatrix(decision,options);
-		dec.score();
+		DecisionMatrix dm = new DecisionMatrix(decision,options);
+		dm.score();
 		
-		System.out.println(dec.getWinner());
+		System.out.println("For the question '"+dm+"', your best choice is "+dm.getWinner());
 	}
-
 }
