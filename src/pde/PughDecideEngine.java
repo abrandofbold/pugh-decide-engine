@@ -2,6 +2,7 @@ package pde;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import static util.Printing.*;
 
 public class PughDecideEngine {
 
@@ -20,7 +21,7 @@ public class PughDecideEngine {
 		System.out.println();
 		Criterion[] criteriaSet = new Criterion[criteriaCount];
 		for (int cn = 0; cn < criteriaCount; cn++){
-			System.out.print("What is your "+(cn+1)+" Criteria? ");
+			System.out.print("What is your "+pNumber(cn+1)+" Criteria? ");
 			String critName = reader.readLine();
 
 			System.out.print("Weight (1-9): ");
