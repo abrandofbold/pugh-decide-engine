@@ -23,7 +23,7 @@ public class PughDecideEngine {
 			pnb(pNL(1)+"What is your "+pNumber(cn+1)+" Criteria? ");
 			String critName = reader.readLine();
 
-			pnb("  "+critName+"'s Weight (1-9): ");
+			pnb("  "+pApos(critName)+" Weight (1-9): ");
 			float critWeight = Float.parseFloat(reader.readLine());
 			
 			criteriaSet[cn] = new Criterion(critName,critWeight,0);
@@ -44,7 +44,7 @@ public class PughDecideEngine {
 				String name = criteriaSet[c].toString();
 				double weight = criteriaSet[c].getWeight();
 				
-				pnb("  "+optionName+"'s "+name+" Value: ");
+				pnb("  "+pApos(optionName)+" "+name+" Value: ");
 				int value = Integer.parseInt(reader.readLine());
 				
 				criteria[c] = new Criterion(name,weight,value);

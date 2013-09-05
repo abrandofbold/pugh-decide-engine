@@ -59,4 +59,9 @@ public class Printing {
 		
 		return i + s;
 	}
+	
+	public static String pApos(String s){
+		s = (s.substring(s.length()-1).equals("s")) ? s + "'" : s + "'s";
+		return s;
+	}
 }
