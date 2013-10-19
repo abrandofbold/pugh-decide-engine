@@ -11,6 +11,9 @@ public class PughDecideEngine {
 		
 		p("[[ Pugh Decide ]]"+pNL(1));
 		
+		p("Please Login");
+		odb.User.login();
+		
 		p("What are you trying to decide?");
 		String decision = reader.readLine();
 		
